@@ -3,7 +3,7 @@ import Login from './components/Login'
 import Home from './components/Home'
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
 // import {createBrowserHistory} from 'history'
-// import ParkContainer from './components/containers/ParkContainer'
+import ParkContainer from './components/containers/ParkContainer'
 import './App.css'
 
 class App extends Component {
@@ -30,24 +30,31 @@ class App extends Component {
   }
 
   logout = () => {
-    console.log('hit')
     localStorage.removeItem('token')
     this.setState({ user: null })
   }
+
+  updateSelectedState = (state) => {
+    this.setState({ selectedState: state })
+  }
   
-  // componentDidMount() {
-  //   fetch('https://peaceful-escarpment-43371.herokuapp.com/api/v1/parks')
-  //     .then(response => response.json())
-  //     .then(result => this.setState({ parks }))
-  // }
+  componentDidMount() {
+    fetch('https://peaceful-escarpment-43371.herokuapp.com/api/v1/parks')
+      .then(response => response.json())
+      .then(parks => this.setState({ parks }))
+  }
 
   render() {
-    console.log(this.state.user)
     return (
       <div className="App">
+        <ParkContainer parks={this.state.parks} 
+          selectedState={this.state.selectedState} 
+          updateSelectedState={this.updateSelectedState} 
+          />
+
         <Router>
           {localStorage.getItem('token') ? <Redirect to='/home' /> : <Redirect to='/' />}
-          <Route exact path='/' render={(...props) => <Login login={this.login} user={this.state.user} /> } />
+          <Route exact path='/login' render={(...props) => <Login login={this.login} user={this.state.user} /> } />
           {this.state.user ? <Route path='/home' render={(...props) => <Home user={this.state.user} logout={this.logout} /> }  /> : null}
         </Router>
       </div>
