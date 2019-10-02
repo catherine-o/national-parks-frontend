@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function ParkCard() {
+export default function ParkCard({park}) {
     return (
-        <div>
-            <p>ParkCard</p>
+        <div className='park-card'>
+            <h1>{park.name}</h1>
         </div>
     )
 }

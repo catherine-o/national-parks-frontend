@@ -28,6 +28,7 @@ export default function Search({parks, updateSelectedState}) {
         <form>
             <label>Search by State</label>
             <select onChange={handleChange}>
+                <option selected=''></option>
                 {listEachState(parks)}
             </select>
         </form>
