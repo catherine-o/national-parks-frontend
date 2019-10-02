@@ -25,8 +25,12 @@ header {
 }
 
 .select-box {
-  width: 120px;
-  height: 70px;
-  font-size: 40px;
+  /* width: auto;
+  height: 70px; */
+  font-size: 70px;
   margin: 50px;
+  background-color: rgb(32, 44, 53);
+  color: white;
+  border: none;
+  font-family: 'Kanit', sans-serif;
 }

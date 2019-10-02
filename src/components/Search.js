@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Search({parks, updateSelectedState}) {
+export default function Search({parks, updateSelectedState, updateSelectedPark}) {
 
     const listEachState = (parks) => {
         const states = []
@@ -21,6 +21,7 @@ export default function Search({parks, updateSelectedState}) {
     const handleChange = (event) => {
         const selection = event.target.value
         updateSelectedState(selection)
+        updateSelectedPark(null)
     }
 
 

@@ -2,7 +2,11 @@ import React from 'react'
 import ParkCard from '../cards/ParkCard'
 import './Container.css'
 
-export default function ParkContainer({parks, selectedState, updateSelectedState}) {
+export default function ParkContainer({parks, selectedState, selectedPark, updateSelectedPark}) {
+
+    const renderPark = (park) => {
+        return <ParkCard park={park} />
+    }
 
     const renderCards = (state) => {
         const filteredParks = parks.filter(park => {
@@ -15,13 +19,15 @@ export default function ParkContainer({parks, selectedState, updateSelectedState
 
     const filterParks = (filteredParks) => {
         return filteredParks.map(park => {
-            return <ParkCard key={park.id} park={park} />
+            return <ParkCard key={park.id} park={park} selectedPark={selectedPark} updateSelectedPark={updateSelectedPark} />
         })
     }
 
     return (
         <div className='park-container'>
-            {renderCards(selectedState)}
+            {selectedPark 
+            ? renderPark(selectedPark)
+            : renderCards(selectedState)}
         </div>
     )
 }

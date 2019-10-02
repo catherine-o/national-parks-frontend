@@ -11,7 +11,7 @@ class App extends Component {
   state = {
     parks: [],
     selectedState: null,
-    selectedPark: '',
+    selectedPark: null,
     user: null
   }
 
@@ -38,6 +38,10 @@ class App extends Component {
   updateSelectedState = (state) => {
     this.setState({ selectedState: state })
   }
+
+  updateSelectedPark = (park) => {
+    this.setState({ selectedPark: park })
+  }
   
   componentDidMount() {
     fetch('https://peaceful-escarpment-43371.herokuapp.com/api/v1/parks')
@@ -50,12 +54,14 @@ class App extends Component {
       <div className="App">
         <header>
           <h1>EN ROUTE to ...</h1>
-          <Search parks={this.state.parks} updateSelectedState={this.updateSelectedState} />
+          <Search parks={this.state.parks} updateSelectedState={this.updateSelectedState} updateSelectedPark={this.updateSelectedPark} />
         </header>
 
         <ParkContainer parks={this.state.parks} 
           selectedState={this.state.selectedState} 
-          updateSelectedState={this.updateSelectedState} 
+          updateSelectedState={this.updateSelectedState}
+          selectedPark={this.state.selectedPark} 
+          updateSelectedPark={this.updateSelectedPark}
           />
 
         <Router>
