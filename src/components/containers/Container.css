@@ -1,0 +1,6 @@
+.park-container {
+    display: flex;
+    flex-flow: row wrap;
+    padding-top: 190px;
+    min-height: 1000px;
+}

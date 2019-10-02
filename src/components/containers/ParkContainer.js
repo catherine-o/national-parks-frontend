@@ -1,6 +1,6 @@
 import React from 'react'
-import Search from '../Search'
 import ParkCard from '../cards/ParkCard'
+import './Container.css'
 
 export default function ParkContainer({parks, selectedState, updateSelectedState}) {
 
@@ -20,8 +20,7 @@ export default function ParkContainer({parks, selectedState, updateSelectedState
     }
 
     return (
-        <div>
-            <Search parks={parks} updateSelectedState={updateSelectedState} />
+        <div className='park-container'>
             {renderCards(selectedState)}
         </div>
     )

@@ -3,6 +3,7 @@ import Login from './components/Login'
 import Home from './components/Home'
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
 // import {createBrowserHistory} from 'history'
+import Search from './components/Search'
 import ParkContainer from './components/containers/ParkContainer'
 import './App.css'
 
@@ -47,6 +48,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <header>
+          <h1>En Route to ...</h1>
+          <Search parks={this.state.parks} updateSelectedState={this.updateSelectedState} />
+        </header>
+
         <ParkContainer parks={this.state.parks} 
           selectedState={this.state.selectedState} 
           updateSelectedState={this.updateSelectedState} 

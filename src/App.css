@@ -1,7 +1,30 @@
 .App {
-  text-align: center;
+  background-image: url('https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fcdn-image.travelandleisure.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F1600x1000%2Fpublic%2F1524519315%2Fyosemite-national-park-NPSUMMEXP0418.jpg%3Fitok%3DjFnLuRTT&q=85');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
-Form {
+header {
+  position: fixed;
+  width: 100%;
+  height: 110px;
+  background-color: rgb(32, 44, 53);
+  color: white;
+  display: flex;
+  font-size: 40px;
+  padding: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form {
   margin-top: 20%;
+}
+
+.select-box {
+  width: 120px;
+  height: 70px;
+  font-size: 40px;
+  margin: 50px;
 }
