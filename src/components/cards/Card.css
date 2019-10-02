@@ -1,5 +1,5 @@
 .park-card {
-    width: 31.35%;
+    width: 31%;
     height: 210px;
     background-color: rgba(240, 248, 255, 0.384);
     border: 0.5px solid rgba(221, 230, 230, 0.253);
@@ -31,4 +31,25 @@
 
 .active-card p {
     font-size: 20px;
+}
+
+.active-card button {
+    font-size: 30px;
+    padding: 10px 15px;
+    margin-right: 20px;
+    border-radius: 4px;
+    float: right;
+    background-color: rgb(32, 44, 53);
+    color: white;
+    box-shadow: 2px 2px 10px 0.2px rgba(146, 142, 142, 0.897);
+}
+
+.active-card button:hover {
+    font-size: 30px;
+    padding: 10px 15px;
+    margin-right: 20px;
+    border-radius: 4px;
+    float: right;
+    color: grey;
+    box-shadow: 0px 0px 0px;
 }
