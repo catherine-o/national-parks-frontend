@@ -49,7 +49,7 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <h1>En Route to ...</h1>
+          <h1>EN ROUTE to ...</h1>
           <Search parks={this.state.parks} updateSelectedState={this.updateSelectedState} />
         </header>
 
