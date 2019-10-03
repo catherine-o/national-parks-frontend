@@ -1,6 +1,6 @@
 import React from 'react'
 import ParkContainer from './ParkContainer'
-import UserProfile from '../cards/UserProfile'
+import UserProfile from './UserProfile/UserProfile'
 
 export default function HomeContainer({parks, selectedState, updateSelectedState, selectedPark, updateSelectedPark, user}) {
 

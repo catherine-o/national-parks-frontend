@@ -1,5 +1,5 @@
 import React from 'react'
-import '../cards/UserProfile.css'
+import './UserProfile.css'
 
 export default function Bucketlist() {
     return (

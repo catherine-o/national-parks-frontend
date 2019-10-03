@@ -1,6 +1,6 @@
 import React from 'react'
-import BucketList from '../containers/Bucketlist'
-import Memoir from '../containers/Memoir'
+import BucketList from './Bucketlist'
+import Memoir from './Memoir'
 import './UserProfile.css'
 
 export default function Home({user}) {

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import Login from './components/Login'
-// import UserProfile from './components/cards/UserProfile'
+import LoginContainer from './components/containers/Login/LoginContainer'
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
 // import {createBrowserHistory} from 'history'
 import Search from './components/Search'
@@ -68,13 +67,6 @@ class App extends Component {
           />
         </header>
 
-        {/* <ParkContainer parks={this.state.parks} 
-          selectedState={this.state.selectedState} 
-          updateSelectedState={this.updateSelectedState}
-          selectedPark={this.state.selectedPark} 
-          updateSelectedPark={this.updateSelectedPark}
-          /> */}
-
         <Router>
           {localStorage.getItem('token') && this.state.user ? <Redirect to='/home' /> : <Redirect to='/login' />}
 
@@ -89,10 +81,7 @@ class App extends Component {
             /> } 
           />
             
-
-          <Route exact path='/login' render={(...props) => <Login login={this.login} user={this.state.user} /> } />
-          {/* {this.state.user ? <Route path='/profile' render={(...props) => <UserProfile user={this.state.user} logout={this.logout} /> }  /> : null} */}
-          {/* {this.state.selectedPark ? <Route path='park' render={(...props) => <ParkCard selectedPark={this.state.selectedPark} />} /> : null} */}
+          <Route exact path='/login' render={(...props) => <LoginContainer login={this.login} user={this.state.user} /> } />
         </Router>
       </div>
     )
