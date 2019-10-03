@@ -6,9 +6,6 @@
 }
 
 
-
-
-
 header {
   position: fixed;
   width: 100%;
@@ -16,16 +13,18 @@ header {
   background-color: rgb(33, 44, 53);
   color: white;
   display: flex;
-  font-size: 40px;
+  font-size: 45px;
   padding: 38px;
   align-items: center;
-  font-family: 'Kanit', sans-serif;
+  font-family: 'Permanent Marker', cursive;
+  letter-spacing: 6px;
+    /* font-style: italic; */
   font-variant: small-caps;
   z-index: 3;
 }
 
 header h1 {
-  margin-left: 280px;
+  margin-left: 200px;
 }
 
 
@@ -39,5 +38,5 @@ header h1 {
   background-color: rgb(32, 44, 53);
   color: white;
   border: none;
-  font-family: 'Kanit', sans-serif;
+  font-family: 'Permanent Marker', cursive;
 }
