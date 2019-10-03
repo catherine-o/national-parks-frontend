@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import Login from './components/Login'
-import Home from './components/Home'
+// import UserProfile from './components/cards/UserProfile'
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
 // import {createBrowserHistory} from 'history'
 import Search from './components/Search'
-import ParkContainer from './components/containers/ParkContainer'
+import HomeContainer from './components/containers/HomeContainer'
 // import ParkCard from './components/cards/ParkCard'
 import './App.css'
 import NavContainer from './components/containers/NavContainer'
@@ -55,7 +55,10 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <NavContainer updateSelectedPark={this.updateSelectedPark} updateSelectedState={this.updateSelectedState} />
+          <NavContainer user={this.state.user}
+            logout={this.logout}
+            updateSelectedPark={this.updateSelectedPark} 
+            updateSelectedState={this.updateSelectedState} />
           <h1>EN ROUTE to ...</h1>
           <Search parks={this.state.parks} 
             selectedState={this.state.selectedState}
@@ -65,17 +68,30 @@ class App extends Component {
           />
         </header>
 
-        <ParkContainer parks={this.state.parks} 
+        {/* <ParkContainer parks={this.state.parks} 
           selectedState={this.state.selectedState} 
           updateSelectedState={this.updateSelectedState}
           selectedPark={this.state.selectedPark} 
           updateSelectedPark={this.updateSelectedPark}
-          />
+          /> */}
 
         <Router>
-          {localStorage.getItem('token') ? <Redirect to='/home' /> : <Redirect to='/' />}
+          {this.state.user ? <Redirect to='/home' /> : <Redirect to='/login' />}
+
+          <Route path='/home' render={(...props) => 
+            <HomeContainer 
+              parks={this.state.parks} 
+              selectedState={this.state.selectedState} 
+              updateSelectedState={this.updateSelectedState}
+              selectedPark={this.state.selectedPark} 
+              updateSelectedPark={this.updateSelectedPark}
+              user={this.state.user}
+            /> } 
+          />
+            
+
           <Route exact path='/login' render={(...props) => <Login login={this.login} user={this.state.user} /> } />
-          {this.state.user ? <Route path='/home' render={(...props) => <Home user={this.state.user} logout={this.logout} /> }  /> : null}
+          {/* {this.state.user ? <Route path='/profile' render={(...props) => <UserProfile user={this.state.user} logout={this.logout} /> }  /> : null} */}
           {/* {this.state.selectedPark ? <Route path='park' render={(...props) => <ParkCard selectedPark={this.state.selectedPark} />} /> : null} */}
         </Router>
       </div>

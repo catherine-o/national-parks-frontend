@@ -21,7 +21,7 @@ export class ParkMap extends Component {
         <Map
             className='map'
             google={this.props.google}
-            zoom={9}
+            zoom={8}
             initialCenter={{
                 lat: this.getLat(),
                 lng: this.getLng()
