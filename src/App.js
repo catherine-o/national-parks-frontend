@@ -76,7 +76,7 @@ class App extends Component {
           /> */}
 
         <Router>
-          {this.state.user ? <Redirect to='/home' /> : <Redirect to='/login' />}
+          {localStorage.getItem('token') && this.state.user ? <Redirect to='/home' /> : <Redirect to='/login' />}
 
           <Route path='/home' render={(...props) => 
             <HomeContainer 
