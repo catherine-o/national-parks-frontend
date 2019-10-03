@@ -7,6 +7,7 @@ import Search from './components/Search'
 import ParkContainer from './components/containers/ParkContainer'
 // import ParkCard from './components/cards/ParkCard'
 import './App.css'
+import NavContainer from './components/containers/NavContainer'
 
 class App extends Component {
   state = {
@@ -54,6 +55,7 @@ class App extends Component {
     return (
       <div className="App">
         <header>
+          <NavContainer />
           <h1>EN ROUTE to ...</h1>
           <Search parks={this.state.parks} updateSelectedState={this.updateSelectedState} updateSelectedPark={this.updateSelectedPark} />
         </header>

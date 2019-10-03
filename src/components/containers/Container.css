@@ -1,7 +1,7 @@
 .park-container {
     display: flex;
     flex-flow: row wrap;
-    padding-top: 190px;
+    padding-top: 180px;
     min-height: 900px;
     justify-content: center;
 }
