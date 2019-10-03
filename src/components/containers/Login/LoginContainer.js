@@ -30,7 +30,19 @@ export default class LoginContainer extends Component {
 
     handleCreateSubmit = (event) => {
         event.preventDefault()
-
+        fetch('https://peaceful-escarpment-43371.herokuapp.com/api/v1/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: this.state.username,
+                name: this.state.name,
+                password: this.state.password
+                })
+            })
+            .then(response => response.json())
+            .then(user => this.props.login(user.user))
     }
 
     switchForms = () => {
