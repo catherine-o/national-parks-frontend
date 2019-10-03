@@ -18,6 +18,7 @@ header {
   align-items: center;
   font-family: 'Kanit', sans-serif;
   font-variant: small-caps;
+  z-index: 5;
 }
 
 .login-form {
@@ -25,8 +26,6 @@ header {
 }
 
 .select-box {
-  /* width: auto;
-  height: 70px; */
   font-size: 70px;
   margin: 50px;
   background-color: rgb(32, 44, 53);

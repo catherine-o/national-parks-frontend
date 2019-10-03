@@ -1,27 +1,30 @@
 import React from 'react'
-import Map from './Map'
+import ParkMap from './ParkMap'
 
-export default function ParkDetails({park}) {
+export default function ParkDetails({park, renderCards, selectedState, updateSelectedPark}) {
 
     const openLink = () => {
         window.open(park.url, "_blank")
     }
 
+    const handleBack = (state) => {
+        updateSelectedPark(null)
+        renderCards(state)
+    }
+
     return (
         <div>
-            <section className='details-top'>
-                <Map park={park} />
-                <div>
-                    <p>{park.description}</p>
-                    <h4>Climate:</h4>
-                    <p>{park.weatherInfo}</p>
-                    <div className='buttons'>
-                        <button onClick={openLink}>➤</button>
-                        <button>Back</button>
-                        <button>♡</button>
-                    </div>
+            <ParkMap park={park} />
+            <div className='details'>
+                <p>{park.description}</p>
+                <h4>Climate:</h4>
+                <p>{park.weatherInfo}</p>
+                <div className='buttons'>
+                    <button onClick={openLink}>➤</button>
+                    <button onClick={() => handleBack(selectedState)}>Back</button>
+                    <button>♡</button>
                 </div>
-            </section>
+            </div>
         </div>
     )
 }

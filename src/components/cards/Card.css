@@ -58,15 +58,15 @@
     margin-right: 20px;
 }
 
-.details-top {
-    display: flex;
-    flex-direction: row;
-    padding-right: 55px;
+
+.details {
+    width: 45%;
+    float: right;
+    margin-right: 30px;
 }
 
 .map {
-    width: 300%;
-    height: 500px;
-    margin: 25px 35px 0px 50px;
-    border: 1px solid grey;
+    width: 35% !important;
+    height: 500px !important;
+    margin: 10px 35px 0px 50px;
 }

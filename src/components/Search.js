@@ -27,7 +27,6 @@ export default function Search({parks, updateSelectedState, updateSelectedPark})
 
     return (
         <form >
-            {/* <label>Search by State</label> */}
             <select className='select-box' onChange={handleChange}>
                 <option selected=''></option>
                 {listEachState(parks)}

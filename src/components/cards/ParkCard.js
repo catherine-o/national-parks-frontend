@@ -2,7 +2,7 @@ import React from 'react'
 import ParkDetails from './ParkDetails'
 import './Card.css'
 
-export default function ParkCard({park, selectedPark, updateSelectedPark}) {
+export default function ParkCard({park, selectedPark, updateSelectedPark, renderCards, selectedState}) {
 
     const handleClick = (park) => {
         if (selectedPark === null) {
@@ -19,7 +19,11 @@ export default function ParkCard({park, selectedPark, updateSelectedPark}) {
                     </>
                 :   <>
                     <h1>{park.name} {park.designation}</h1> 
-                    <ParkDetails park={park} />
+                    <ParkDetails park={park} 
+                        renderCards={renderCards} 
+                        selectedState={selectedState} 
+                        updateSelectedPark={updateSelectedPark} 
+                        />
                     </>
             }     
         </div>

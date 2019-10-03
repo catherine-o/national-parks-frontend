@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
 // import {createBrowserHistory} from 'history'
 import Search from './components/Search'
 import ParkContainer from './components/containers/ParkContainer'
+// import ParkCard from './components/cards/ParkCard'
 import './App.css'
 
 class App extends Component {
@@ -68,6 +69,7 @@ class App extends Component {
           {localStorage.getItem('token') ? <Redirect to='/home' /> : <Redirect to='/' />}
           <Route exact path='/login' render={(...props) => <Login login={this.login} user={this.state.user} /> } />
           {this.state.user ? <Route path='/home' render={(...props) => <Home user={this.state.user} logout={this.logout} /> }  /> : null}
+          {/* {this.state.selectedPark ? <Route path='park' render={(...props) => <ParkCard selectedPark={this.state.selectedPark} />} /> : null} */}
         </Router>
       </div>
     )
