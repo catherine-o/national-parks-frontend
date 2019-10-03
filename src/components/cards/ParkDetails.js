@@ -22,6 +22,7 @@ export default function ParkDetails({park, renderCards, selectedState, updateSel
                 <div className='buttons'>
                     <button onClick={openLink}>➤</button>
                     <button onClick={() => handleBack(selectedState)}>Back</button>
+                    <button>✘</button>
                     <button>♡</button>
                 </div>
             </div>
