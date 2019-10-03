@@ -18,14 +18,7 @@
     transition: visibility .8s ease-in-out;
   }
   
-  /* .nav-arrow:hover .nav {
-    display: block;
-    background-color: rgb(185, 189, 192);
-  } */
-  
   .nav {
-    /* display: inline-block; */
-    /* position: relative; */
     margin-top: 590px;
     height: 700px;
     width: 100px;
@@ -55,5 +48,4 @@
     background-color: rgb(61, 80, 95);
     width: 100%;
     margin: 0px -40px;
-    /* padding: 0px 30px; */
   }

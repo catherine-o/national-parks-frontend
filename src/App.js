@@ -55,9 +55,14 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <NavContainer />
+          <NavContainer updateSelectedPark={this.updateSelectedPark} updateSelectedState={this.updateSelectedState} />
           <h1>EN ROUTE to ...</h1>
-          <Search parks={this.state.parks} updateSelectedState={this.updateSelectedState} updateSelectedPark={this.updateSelectedPark} />
+          <Search parks={this.state.parks} 
+            selectedState={this.state.selectedState}
+            updateSelectedState={this.updateSelectedState} 
+            selectedPark={this.state.selectedPark}
+            updateSelectedPark={this.updateSelectedPark} 
+          />
         </header>
 
         <ParkContainer parks={this.state.parks} 

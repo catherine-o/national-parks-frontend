@@ -4,11 +4,15 @@ import { Map, GoogleApiWrapper } from 'google-maps-react'
 export class ParkMap extends Component {
 
     getLat = () => {
+        if (this.props.park.latLong) {
         return this.props.park.latLong.split(',')[0].split(':')[1]
+        }
     }
     
     getLng = () => {
+        if (this.props.park.latLong) {
         return this.props.park.latLong.split(',')[1].split(':')[1]
+        }
     }
     
     render() {

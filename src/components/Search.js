@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Search({parks, updateSelectedState, updateSelectedPark}) {
+export default function Search({parks, selectedState, updateSelectedState, selectedPark, updateSelectedPark}) {
 
     const listEachState = (parks) => {
         const states = []
@@ -28,6 +28,7 @@ export default function Search({parks, updateSelectedState, updateSelectedPark})
     return (
         <form >
             <select className='select-box' onChange={handleChange}>
+               {/* {if (selectedState === null && selectedPark === null) { */}
                 <option selected=''></option>
                 {listEachState(parks)}
             </select>
