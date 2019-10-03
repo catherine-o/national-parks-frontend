@@ -17,7 +17,7 @@ export default function ParkDetails({park, renderCards, selectedState, updateSel
             <ParkMap park={park} />
             <div className='details'>
                 <p>{park.description}</p>
-                <h4>Climate:</h4>
+                <h3>Climate:</h3>
                 <p>{park.weatherInfo}</p>
                 <div className='buttons'>
                     <button onClick={openLink}>➤</button>
