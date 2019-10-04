@@ -16,7 +16,7 @@ class App extends Component {
   }
 
   login = (user) => {
-    fetch('http://localhost:3000/api/v1/login', {
+    fetch('https://peaceful-escarpment-43371.herokuapp.com/api/v1/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ class App extends Component {
   }
 
   addParkToBucketlist = (park) => {
-    fetch('http://localhost:3000/api/v1/bucketlists', {
+    fetch('https://peaceful-escarpment-43371.herokuapp.com/api/v1/bucketlists', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
