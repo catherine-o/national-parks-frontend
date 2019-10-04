@@ -2,7 +2,7 @@ import React from 'react'
 import ParkContainer from './ParkContainer'
 import UserProfile from './UserProfile/UserProfile'
 
-export default function HomeContainer({parks, selectedState, updateSelectedState, selectedPark, updateSelectedPark, user}) {
+export default function HomeContainer({parks, selectedState, updateSelectedState, selectedPark, updateSelectedPark, user, bucketlist, addParkToBucketlist}) {
 
     const renderParksOrProfile = () => {
         if(selectedState) {
@@ -11,9 +11,11 @@ export default function HomeContainer({parks, selectedState, updateSelectedState
             updateSelectedState={updateSelectedState}
             selectedPark={selectedPark} 
             updateSelectedPark={updateSelectedPark}
+            addParkToBucketlist={addParkToBucketlist}
+            bucketlist={bucketlist}
             />
         } else if(user) {
-            return <UserProfile user={user} />
+            return <UserProfile user={user} bucketlist={bucketlist} />
         }
     }
 

@@ -1,15 +1,27 @@
 import React from 'react'
 import ParkMap from './ParkMap'
 
-export default function ParkDetails({park, renderCards, selectedState, updateSelectedPark}) {
+export default function ParkDetails({park, renderCards, selectedState, updateSelectedPark, addParkToBucketlist, bucketlist}) {
 
     const openLink = () => {
         window.open(park.url, "_blank")
     }
 
-    const handleBack = (state) => {
+    const handleBackButtonClick = (state) => {
         updateSelectedPark(null)
         renderCards(state)
+    }
+
+    const handleHeartButtonClick = () => {
+        addParkToBucketlist(park)
+    }
+
+    const renderHeartButton = () => {
+        console.log(park)
+        bucketlist.map(park => console.log(park))
+        return bucketlist.includes(park.name)
+            ? <button onClick={handleHeartButtonClick}>♥</button>
+            : <button onClick={handleHeartButtonClick}>♡</button>
     }
 
     return (
@@ -21,9 +33,9 @@ export default function ParkDetails({park, renderCards, selectedState, updateSel
                 <p>{park.weatherInfo}</p>
                 <div className='buttons'>
                     <button onClick={openLink}>➤</button>
-                    <button onClick={() => handleBack(selectedState)}>Back</button>
+                    <button onClick={() => handleBackButtonClick(selectedState)}>Back</button>
                     <button>✘</button>
-                    <button>♡</button>
+                    {renderHeartButton()}
                 </div>
             </div>
         </div>

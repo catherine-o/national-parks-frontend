@@ -1,11 +1,10 @@
 import React from 'react'
 import './UserProfile.css'
 
-export default function Bucketlist({user}) {
-    console.log(user.parks)
+export default function Bucketlist({bucketlist}) {
 
     const listParks = () => {
-        return user.parks.map(park => {
+        return bucketlist.map(park => {
             return <li>{park.name} {park.designation}</li>
         })
     }

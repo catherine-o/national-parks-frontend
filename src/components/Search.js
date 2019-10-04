@@ -29,7 +29,7 @@ export default function Search({parks, selectedState, updateSelectedState, selec
         <form >
             <select className='select-box' onChange={handleChange}>
                {/* {if (selectedState === null && selectedPark === null) { */}
-                <option selected=''></option>
+                <option value=''></option>
                 {listEachState(parks)}
             </select>
         </form>

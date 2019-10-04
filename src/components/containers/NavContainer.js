@@ -18,9 +18,14 @@ export default function NavContainer({user, logout, updateSelectedPark, updateSe
         <div className='nav'>
             <button className='nav-arrow'>➤</button>
             <ul className='nav-content'>
-                <li onClick={handleClickHome}>Home</li>
-                <li>List</li>
-                <li>Grid</li>
+                {user
+                    ? <> 
+                        <li onClick={handleClickHome}>Home</li>
+                        <li>List</li>
+                        <li>Grid</li>
+                    </>
+                    : null
+                }
                 {loginLogoutNav()}
             </ul>
         </div>

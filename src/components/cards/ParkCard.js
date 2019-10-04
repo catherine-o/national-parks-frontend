@@ -2,7 +2,7 @@ import React from 'react'
 import ParkDetails from './ParkDetails'
 import './Card.css'
 
-export default function ParkCard({park, selectedPark, updateSelectedPark, renderCards, selectedState}) {
+export default function ParkCard({park, selectedPark, updateSelectedPark, renderCards, selectedState, addParkToBucketlist, bucketlist}) {
 
     const handleClick = (park) => {
         if (selectedPark === null) {
@@ -23,6 +23,8 @@ export default function ParkCard({park, selectedPark, updateSelectedPark, render
                         renderCards={renderCards} 
                         selectedState={selectedState} 
                         updateSelectedPark={updateSelectedPark} 
+                        addParkToBucketlist={addParkToBucketlist}
+                        bucketlist={bucketlist}
                         />
                     </>
             }     

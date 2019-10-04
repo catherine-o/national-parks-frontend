@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import LoginContainer from './components/containers/Login/LoginContainer'
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
-// import {createBrowserHistory} from 'history'
 import Search from './components/Search'
 import HomeContainer from './components/containers/HomeContainer'
-// import ParkCard from './components/cards/ParkCard'
 import './App.css'
 import NavContainer from './components/containers/NavContainer'
 
@@ -13,7 +11,8 @@ class App extends Component {
     parks: [],
     selectedState: null,
     selectedPark: null,
-    user: null
+    user: null,
+    bucketlist: null
   }
 
   login = (user) => {
@@ -27,7 +26,10 @@ class App extends Component {
     .then(response => response.json())
     .then(user => {
       localStorage.setItem('token', user.jwt)
-      this.setState({ user: user.user })
+      this.setState({ 
+        user: user.user,
+        bucketlist: user.user.parks
+       })
     })
   }
 
@@ -42,6 +44,22 @@ class App extends Component {
 
   updateSelectedPark = (park) => {
     this.setState({ selectedPark: park })
+  }
+
+  addParkToBucketlist = (park) => {
+    fetch('http://localhost:3000/api/v1/bucketlists', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user_id: this.state.user.id,
+        park_id: park.id
+        })
+      })
+      .then(response => response.json())
+      .then(newPark => this.setState({bucketlist: [...this.state.bucketlist, newPark]}))
   }
   
   componentDidMount() {
@@ -78,6 +96,8 @@ class App extends Component {
               selectedPark={this.state.selectedPark} 
               updateSelectedPark={this.updateSelectedPark}
               user={this.state.user}
+              bucketlist={this.state.bucketlist}
+              addParkToBucketlist={this.addParkToBucketlist}
             /> } 
           />
             

@@ -2,13 +2,15 @@ import React from 'react'
 import ParkCard from '../cards/ParkCard'
 import './Container.css'
 
-export default function ParkContainer({parks, selectedState, selectedPark, updateSelectedPark}) {
+export default function ParkContainer({parks, selectedState, selectedPark, updateSelectedPark, addParkToBucketlist, bucketlist}) {
 
     const renderSelectedPark = (park) => {
         return <ParkCard park={park} 
                 renderCards={renderCards} 
                 selectedState={selectedState} 
                 updateSelectedPark={updateSelectedPark} 
+                addParkToBucketlist={addParkToBucketlist}
+                bucketlist={bucketlist}
                 />
     }
 
@@ -28,6 +30,8 @@ export default function ParkContainer({parks, selectedState, selectedPark, updat
                     selectedPark={selectedPark} 
                     updateSelectedPark={updateSelectedPark} 
                     selectedState={selectedState} 
+                    addParkToBucketlist={addParkToBucketlist}
+                    bucketlist={bucketlist}
                     />
         })
     }
