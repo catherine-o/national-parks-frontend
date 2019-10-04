@@ -29,8 +29,8 @@ class App extends Component {
       localStorage.setItem('token', user.jwt)
       this.setState({ 
         user: user.user,
-        bucketlist: user.user.bucketlists.map(bl => bl.park),
-        memoir: user.user.memoirs.map(m => m.park)
+        bucketlist: user.user.bucketlists.map(bl => bl),
+        memoir: user.user.memoirs.map(m => m)
        })
     })
   }
@@ -60,24 +60,30 @@ class App extends Component {
         park_id: park.id
         })
       })
-      return this.updateBucketlist(park)
+      .then(response => response.json())
+      .then(bl => this.setState({ bucketlist: [...this.state.bucketlist, bl] }))
+      // return this.updateBucketlist(park)
   }
 
-  updateBucketlist = (park) => {
-    JSON.stringify(this.state.bucketlist).includes(JSON.stringify(park))
-      ? this.setState({bucketlist: this.state.bucketlist.filter(p => JSON.stringify(p) !== JSON.stringify(park))})
-      : this.setState({bucketlist: [...this.state.bucketlist, park]})
-  }
+  // updateBucketlist = (park) => {
+  //   console.log(park)
+  //   console.log(this.state.bucketlist)
+  //   JSON.stringify(this.state.bucketlist).includes(JSON.stringify(park))
+  //     ? this.setState({bucketlist: this.state.bucketlist.filter(p => JSON.stringify(p) !== JSON.stringify(park))})
+  //     : this.setState({bucketlist: [...this.state.bucketlist, park]})
+  // }
 
   removeParkFromBucketlist = (park) => {
-    const foundBucketlist = this.state.user.bucketlists.find(bucketlist => bucketlist.park_id === park.id)
+    const foundBucketlist = this.state.bucketlist.find(bl => JSON.stringify(bl.park) === JSON.stringify(park))
+    console.log(foundBucketlist)
+    console.log(this.state.bucketlist)
     fetch('http://localhost:3000/api/v1/bucketlists/' + foundBucketlist.id, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
     })
-      return this.updateBucketlist(park)
+      .then(this.setState({ bucketlist: this.state.bucketlist.filter(p => JSON.stringify(p) !== JSON.stringify(foundBucketlist))}))
   }
 
   addParkToMemoir = (park) => {

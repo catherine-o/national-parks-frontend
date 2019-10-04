@@ -4,8 +4,8 @@ import './UserProfile.css'
 export default function Bucketlist({bucketlist}) {
 
     const listParks = () => {
-        return bucketlist.map(park => {
-            return <li>{park.name} {park.designation}</li>
+        return bucketlist.map(bl => {
+            return <li>{bl.park.name} {bl.park.designation}</li>
         })
     }
 

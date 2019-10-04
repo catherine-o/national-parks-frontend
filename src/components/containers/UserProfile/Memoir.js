@@ -4,8 +4,8 @@ import './UserProfile.css'
 export default function Memoir({memoir}) {
 
     const listParks = () => {
-        return memoir.map(park => {
-            return <li>{park.name} {park.designation}</li>
+        return memoir.map(m => {
+            return <li>{m.park.name} {m.park.designation}</li>
         })
     }
     return (
