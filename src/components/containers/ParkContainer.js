@@ -2,7 +2,7 @@ import React from 'react'
 import ParkCard from '../cards/ParkCard'
 import './Container.css'
 
-export default function ParkContainer({parks, selectedState, selectedPark, updateSelectedPark, addParkToBucketlist, removeParkFromBucketlist, bucketlist}) {
+export default function ParkContainer({parks, selectedState, selectedPark, updateSelectedPark, addParkToBucketlist, removeParkFromBucketlist, bucketlist, memoir, addParkToMemoir, removeParkFromMemoir}) {
 
     const renderSelectedPark = (park) => {
         return <ParkCard park={park} 
@@ -11,7 +11,10 @@ export default function ParkContainer({parks, selectedState, selectedPark, updat
                 updateSelectedPark={updateSelectedPark} 
                 addParkToBucketlist={addParkToBucketlist}
                 removeParkFromBucketlist={removeParkFromBucketlist}
+                addParkToMemoir={addParkToMemoir}
+                removeParkFromMemoir={removeParkFromMemoir}
                 bucketlist={bucketlist}
+                memoir={memoir}
                 />
     }
 
@@ -33,7 +36,10 @@ export default function ParkContainer({parks, selectedState, selectedPark, updat
                     selectedState={selectedState} 
                     addParkToBucketlist={addParkToBucketlist}
                     removeParkFromBucketlist={removeParkFromBucketlist}
+                    addParkToMemoir={addParkToMemoir}
+                    removeParkFromMemoir={removeParkFromMemoir}
                     bucketlist={bucketlist}
+                    memoir={memoir}
                     />
         })
     }

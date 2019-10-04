@@ -12,11 +12,12 @@ class App extends Component {
     selectedState: null,
     selectedPark: null,
     user: null,
-    bucketlist: null
+    bucketlist: null,
+    memoir: null
   }
 
   login = (user) => {
-    fetch('https://peaceful-escarpment-43371.herokuapp.com/api/v1/login', {
+    fetch('http://localhost:3000/api/v1/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -28,7 +29,8 @@ class App extends Component {
       localStorage.setItem('token', user.jwt)
       this.setState({ 
         user: user.user,
-        bucketlist: user.user.parks
+        bucketlist: user.user.bucketlists.map(bl => bl.park),
+        memoir: user.user.memoirs.map(m => m.park)
        })
     })
   }
@@ -47,7 +49,7 @@ class App extends Component {
   }
 
   addParkToBucketlist = (park) => {
-    fetch('https://peaceful-escarpment-43371.herokuapp.com/api/v1/bucketlists', {
+    fetch('http://localhost:3000/api/v1/bucketlists', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -69,7 +71,7 @@ class App extends Component {
 
   removeParkFromBucketlist = (park) => {
     const foundBucketlist = this.state.user.bucketlists.find(bucketlist => bucketlist.park_id === park.id)
-    fetch('https://peaceful-escarpment-43371.herokuapp.com/api/v1/bucketlists/' + foundBucketlist.id, {
+    fetch('http://localhost:3000/api/v1/bucketlists/' + foundBucketlist.id, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -77,9 +79,42 @@ class App extends Component {
     })
       return this.updateBucketlist(park)
   }
+
+  addParkToMemoir = (park) => {
+    fetch('http://localhost:3000/api/v1/memoirs', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user_id: this.state.user.id,
+        park_id: park.id
+        })
+      })
+      return this.updateMemoir(park)
+  }
+
+  updateMemoir = (park) => {
+    JSON.stringify(this.state.memoir).includes(JSON.stringify(park))
+      ? this.setState({memoir: this.state.memoir.filter(p => JSON.stringify(p) !== JSON.stringify(park))})
+      : this.setState({memoir: [...this.state.memoir, park]})
+  }
+
+  removeParkFromMemoir = (park) => {
+    const foundMemoir = this.state.user.memoirs.find(memoir => memoir.park_id === park.id)
+    fetch('http://localhost:3000/api/v1/memoirs/' + foundMemoir.id, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+      return this.updateMemoir(park)
+  }
+
   
   componentDidMount() {
-    fetch('https://peaceful-escarpment-43371.herokuapp.com/api/v1/parks')
+    fetch('http://localhost:3000/api/v1/parks')
       .then(response => response.json())
       .then(parks => this.setState({ parks }))
   }
@@ -113,8 +148,11 @@ class App extends Component {
               updateSelectedPark={this.updateSelectedPark}
               user={this.state.user}
               bucketlist={this.state.bucketlist}
+              memoir={this.state.memoir}
               addParkToBucketlist={this.addParkToBucketlist}
               removeParkFromBucketlist={this.removeParkFromBucketlist}
+              addParkToMemoir={this.addParkToMemoir}
+              removeParkFromMemoir={this.removeParkFromMemoir}
             /> } 
           />
             
@@ -126,3 +164,11 @@ class App extends Component {
 }
 
 export default App
+
+
+const selectImage = (images, path) => {
+  path = path || 'images/'; // default path here
+  var num = Math.floor( Math.random() * images.length );
+  var img = images[ num ];
+  return img
+}

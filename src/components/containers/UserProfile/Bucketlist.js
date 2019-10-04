@@ -10,7 +10,7 @@ export default function Bucketlist({bucketlist}) {
     }
 
     return (
-        <div className='bucketlist'>
+        <div className='profile-list'>
             <h4>Bucketlist: hit the ♡ to save here</h4>
             <ul>
                 {listParks()}

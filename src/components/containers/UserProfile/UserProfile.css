@@ -11,25 +11,18 @@
     margin-top: 20px;
 }
 
-.bucketlist {
+.profile-list {
     border: 1px solid lightgray;
     height: 450px;
     width: 45%;
     text-align: center;
 }
 
-.bucketlist ul {
+.profile-list ul {
     list-style: none;
     text-align: left;
     font-size: 20px;
     padding: 0 85px;
     line-height: 30px;
     overflow: auto;
-}
-
-.memoir {
-    border: 1px solid lightgray;
-    height: 450px;
-    width: 45%;
-    text-align: center;
 }
