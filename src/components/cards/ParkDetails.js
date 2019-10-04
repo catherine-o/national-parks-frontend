@@ -1,7 +1,8 @@
 import React from 'react'
 import ParkMap from './ParkMap'
+import './Card.css'
 
-export default function ParkDetails({park, renderCards, selectedState, updateSelectedPark, addParkToBucketlist, bucketlist}) {
+export default function ParkDetails({park, renderCards, selectedState, updateSelectedPark, addParkToBucketlist, removeParkFromBucketlist, bucketlist}) {
 
     const openLink = () => {
         window.open(park.url, "_blank")
@@ -13,14 +14,14 @@ export default function ParkDetails({park, renderCards, selectedState, updateSel
     }
 
     const handleHeartButtonClick = () => {
-        addParkToBucketlist(park)
+        return JSON.stringify(bucketlist).includes(JSON.stringify(park))
+            ? removeParkFromBucketlist(park)
+            : addParkToBucketlist(park)
     }
 
     const renderHeartButton = () => {
-        console.log(park)
-        bucketlist.map(park => console.log(park))
-        return bucketlist.includes(park.name)
-            ? <button onClick={handleHeartButtonClick}>♥</button>
+        return JSON.stringify(bucketlist).includes(JSON.stringify(park))
+            ? <button className='selected' onClick={handleHeartButtonClick}>♥</button>
             : <button onClick={handleHeartButtonClick}>♡</button>
     }
 

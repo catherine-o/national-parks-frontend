@@ -16,7 +16,7 @@ class App extends Component {
   }
 
   login = (user) => {
-    fetch('https://peaceful-escarpment-43371.herokuapp.com/api/v1/login', {
+    fetch('http://localhost:3000/api/v1/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ class App extends Component {
   }
 
   addParkToBucketlist = (park) => {
-    fetch('https://peaceful-escarpment-43371.herokuapp.com/api/v1/bucketlists', {
+    fetch('http://localhost:3000/api/v1/bucketlists', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -58,12 +58,35 @@ class App extends Component {
         park_id: park.id
         })
       })
-      .then(response => response.json())
-      .then(newPark => this.setState({bucketlist: [...this.state.bucketlist, newPark]}))
+      // .then(response => response.json())
+      return this.updateBucketlist(park)
+  }
+
+  updateBucketlist = (park) => {
+    this.state.bucketlist.includes(park)
+      ? this.setState({bucketlist: this.state.bucketlist.filter(p => p !== park)})
+      : this.setState({bucketlist: [...this.state.bucketlist, park]})
+  }
+
+  removeParkFromBucketlist = (park) => {
+    console.log(park)
+    console.log(this.state.bucketlist)
+    fetch('http://localhost:3000/api/v1/bucketlists', {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user_id: this.state.user.id,
+        park_id: park.id
+        })
+      })
+      return this.updateBucketlist(park)
   }
   
   componentDidMount() {
-    fetch('https://peaceful-escarpment-43371.herokuapp.com/api/v1/parks')
+    fetch('http://localhost:3000/api/v1/parks')
       .then(response => response.json())
       .then(parks => this.setState({ parks }))
   }
@@ -98,6 +121,7 @@ class App extends Component {
               user={this.state.user}
               bucketlist={this.state.bucketlist}
               addParkToBucketlist={this.addParkToBucketlist}
+              removeParkFromBucketlist={this.removeParkFromBucketlist}
             /> } 
           />
             
