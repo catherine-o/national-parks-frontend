@@ -62,21 +62,10 @@ class App extends Component {
       })
       .then(response => response.json())
       .then(bl => this.setState({ bucketlist: [...this.state.bucketlist, bl] }))
-      // return this.updateBucketlist(park)
   }
-
-  // updateBucketlist = (park) => {
-  //   console.log(park)
-  //   console.log(this.state.bucketlist)
-  //   JSON.stringify(this.state.bucketlist).includes(JSON.stringify(park))
-  //     ? this.setState({bucketlist: this.state.bucketlist.filter(p => JSON.stringify(p) !== JSON.stringify(park))})
-  //     : this.setState({bucketlist: [...this.state.bucketlist, park]})
-  // }
 
   removeParkFromBucketlist = (park) => {
     const foundBucketlist = this.state.bucketlist.find(bl => JSON.stringify(bl.park) === JSON.stringify(park))
-    console.log(foundBucketlist)
-    console.log(this.state.bucketlist)
     fetch('http://localhost:3000/api/v1/bucketlists/' + foundBucketlist.id, {
       method: 'DELETE',
       headers: {
@@ -98,26 +87,20 @@ class App extends Component {
         park_id: park.id
         })
       })
-      return this.updateMemoir(park)
-  }
-
-  updateMemoir = (park) => {
-    JSON.stringify(this.state.memoir).includes(JSON.stringify(park))
-      ? this.setState({memoir: this.state.memoir.filter(p => JSON.stringify(p) !== JSON.stringify(park))})
-      : this.setState({memoir: [...this.state.memoir, park]})
+      .then(response => response.json())
+      .then(m => this.setState({ memoir: [...this.state.memoir, m] }))
   }
 
   removeParkFromMemoir = (park) => {
-    const foundMemoir = this.state.user.memoirs.find(memoir => memoir.park_id === park.id)
+    const foundMemoir = this.state.memoir.find(m => JSON.stringify(m.park) === JSON.stringify(park))
     fetch('http://localhost:3000/api/v1/memoirs/' + foundMemoir.id, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
     })
-      return this.updateMemoir(park)
+      .then(this.setState({ memoir: this.state.memoir.filter(p => JSON.stringify(p) !== JSON.stringify(foundMemoir))}))
   }
-
   
   componentDidMount() {
     fetch('http://localhost:3000/api/v1/parks')

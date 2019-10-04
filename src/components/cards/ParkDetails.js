@@ -27,15 +27,14 @@ export default function ParkDetails({park, renderCards, selectedState, updateSel
 
     const renderHeartButton = () => {
         const blParks = bucketlist.map(bl => bl.park)
-        console.log(blParks)
-        console.log(park)
         return JSON.stringify(blParks).includes(JSON.stringify(park))
             ? <button className='selected' onClick={handleHeartButtonClick}>♥</button>
             : <button onClick={handleHeartButtonClick}>♡</button>
     }
     
     const renderXButton = () => {
-        return JSON.stringify(memoir).includes(JSON.stringify(park))
+        const mParks = memoir.map(m => m.park)
+        return JSON.stringify(mParks).includes(JSON.stringify(park))
             ? <button className='selected' onClick={handleXButtonClick}>✘</button>
             : <button onClick={handleXButtonClick}>✘</button>
     }
