@@ -16,7 +16,7 @@ class App extends Component {
   }
 
   login = (user) => {
-    fetch('http://localhost:3000/api/v1/login', {
+    fetch('https://peaceful-escarpment-43371.herokuapp.com/api/v1/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ class App extends Component {
   }
 
   addParkToBucketlist = (park) => {
-    fetch('http://localhost:3000/api/v1/bucketlists', {
+    fetch('https://peaceful-escarpment-43371.herokuapp.com/api/v1/bucketlists', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -58,35 +58,28 @@ class App extends Component {
         park_id: park.id
         })
       })
-      // .then(response => response.json())
       return this.updateBucketlist(park)
   }
 
   updateBucketlist = (park) => {
-    this.state.bucketlist.includes(park)
-      ? this.setState({bucketlist: this.state.bucketlist.filter(p => p !== park)})
+    JSON.stringify(this.state.bucketlist).includes(JSON.stringify(park))
+      ? this.setState({bucketlist: this.state.bucketlist.filter(p => JSON.stringify(p) !== JSON.stringify(park))})
       : this.setState({bucketlist: [...this.state.bucketlist, park]})
   }
 
   removeParkFromBucketlist = (park) => {
-    console.log(park)
-    console.log(this.state.bucketlist)
-    fetch('http://localhost:3000/api/v1/bucketlists', {
+    const foundBucketlist = this.state.user.bucketlists.find(bucketlist => bucketlist.park_id === park.id)
+    fetch('https://peaceful-escarpment-43371.herokuapp.com/api/v1/bucketlists/' + foundBucketlist.id, {
       method: 'DELETE',
       headers: {
-        'Authorization': `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        user_id: this.state.user.id,
-        park_id: park.id
-        })
-      })
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    })
       return this.updateBucketlist(park)
   }
   
   componentDidMount() {
-    fetch('http://localhost:3000/api/v1/parks')
+    fetch('https://peaceful-escarpment-43371.herokuapp.com/api/v1/parks')
       .then(response => response.json())
       .then(parks => this.setState({ parks }))
   }
