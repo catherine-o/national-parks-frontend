@@ -1,6 +1,7 @@
 .park-card {
     width: 31%;
-    height: 210px;
+    min-height: 210px;
+    max-height: 245px;
     background-color: rgba(240, 248, 255, 0.384);
     border: 0.5px solid rgba(221, 230, 230, 0.253);
     text-align: center;
