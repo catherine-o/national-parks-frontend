@@ -21,9 +21,7 @@ export default function NavContainer({user, logout, updateSelectedPark, updateSe
                 {user
                     ? <> 
                         <li onClick={handleClickHome}>Home</li>
-                        <li>List</li>
-                        <li>Grid</li>
-                    </>
+                      </>
                     : null
                 }
                 {loginLogoutNav()}
