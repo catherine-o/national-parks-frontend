@@ -12,6 +12,7 @@
     border-radius: 3px;
     color: white;
     font-size: 25px;
+    position: fixed;
   }
 
 .login-form input {

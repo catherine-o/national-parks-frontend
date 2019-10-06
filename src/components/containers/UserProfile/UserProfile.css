@@ -1,6 +1,6 @@
 .profile {
     padding: 15% 5%;
-    min-height: 500px;
+    min-height: 450px;
     font-size: 30px;
     background-color: rgba(255, 255, 255, 0.911);
 }
@@ -13,9 +13,10 @@
 
 .profile-list {
     border: 1px solid lightgray;
-    height: 450px;
+    height: 400px;
     width: 45%;
     text-align: center;
+    overflow: auto;
 }
 
 .profile-list ul {
@@ -24,5 +25,5 @@
     font-size: 20px;
     padding: 0 85px;
     line-height: 30px;
-    overflow: auto;
+    /* overflow: auto; */
 }
