@@ -5,7 +5,7 @@ export default function Bucketlist({bucketlist}) {
 
     const listParks = () => {
         return bucketlist.map(bl => {
-            return <li>{bl.park.name} {bl.park.designation}</li>
+            return <li>{bl.park.name} {bl.park.designation} - ({bl.park.states})</li>
         })
     }
 
