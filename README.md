@@ -16,7 +16,7 @@
 En Route is a single page application where users can save National Parks and Monuments to a Bucketlist (places where they'd like to go) or a Memoir (places where they have been). Users have the opportunity to filter parks by state, learn more about each park, as well as view a Google Map of the park's general location.
 
 ## Intro Video
-[Sensi on YouTube](https://www.youtube.com/watch?v=WzjgFscnQqE)
+[En Route on YouTube](https://www.youtube.com/watch?v=WzjgFscnQqE)
 
 ## Technologies
 * React.js
