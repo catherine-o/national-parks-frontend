@@ -94,7 +94,7 @@ Project is: deployed for desktop browsers at [https://national-parks-app.web.app
 The inspiration for En Route came from my love of nature and traveling. There are many wonderous places to visit and this app is an example of how we can keep track of them.
 
 ## Contact
-Created by [Catherine O'Hara](www.linkedin.com/in/catherine-o)
+Created by [Catherine O'Hara](https://www.linkedin.com/in/catherine-o/)
 
 Feel free to contact me!
 
